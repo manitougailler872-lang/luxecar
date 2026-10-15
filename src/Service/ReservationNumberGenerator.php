@@ -16,7 +16,7 @@ class ReservationNumberGenerator
         $year = (int) $now->format('Y');
 
         $latest = $this->repo->findLatestForYear($year);
-        $next   = 1;
+        $next   = 500;
 
         if ($latest !== null && preg_match('/^LC-\d{4}-(\d+)$/', $latest->getReservationNumber(), $m) === 1) {
             $next = ((int) $m[1]) + 1;
