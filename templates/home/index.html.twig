@@ -116,13 +116,12 @@
                 {% else %}
                     {% set logo = 'renault.svg' %}
                 {% endif %}
-                <a href="{{ path('vehicle_list', {brand: b}) }}" class="card-luxe gap-2 bg-white border-1 border-luxe-border px-4 py-6 flex items-center justify-center text-luxe-muted hover:text-luxe-orange hover:border-luxe-orange transition font-display font-semibold text-sm">
+                <a href="{{ path('vehicle_list', {brand: b}) }}" class="card-luxe gap-2 bg-white border-1 border-luxe-border px-4 py-6 flex items-center justify-center text-luxe-muted hover:text-luxe-orange hover:border-luxe-orange transition flex-col font-display font-semibold text-sm">
                     <img
                         src="{{ asset('images/marques/' ~ logo) }}"
                         alt="LUXE CAR"
-                        class="h-8 w-10 mx-1 text-white inline-block object-contain"
+                        class="h-8 w-10 mx-1 text-white inline-block object-cover"
                     >
-                    <br/>
                     {{ b }}
                 </a>
             {% endfor %}
