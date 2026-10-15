@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Contrat de vente d'une voiture d'occasion</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background: #ddd;
+                font-family: Arial, Helvetica, sans-serif;
+                color: #000;
+            }
+            body {
+                padding: 18px 0;
+            }
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0 auto 18px;
+                background: #fff;
+                position: relative;
+                padding: 7.8mm 12.3mm 7.2mm 12.3mm;
+                overflow: hidden;
+                font-size: 3.12mm;
+                line-height: 1.12;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            }
+            .brand-header {
+                height: 15mm;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5mm;
+            }
+            .brand-header img {
+                max-height: 13mm;
+                max-width: 55mm;
+                width: auto;
+                height: auto;
+            }
+            .head {
+                display: flex;
+                align-items: center;
+                gap: 3.2mm;
+                margin-bottom: 0.5mm;
+            }
+            .head-line {
+                height: 0.25mm;
+                background: #000;
+                flex: 1;
+            }
+            h1 {
+                margin: 0;
+                white-space: nowrap;
+                font-size: 5.2mm;
+                line-height: 1;
+                font-weight: 800;
+                font-variant: small-caps;
+                letter-spacing: 0.05mm;
+            }
+            .top-meta {
+                position: relative;
+                height: 5.4mm;
+                margin-bottom: 0.5mm;
+            }
+            .between {
+                position: absolute;
+                left: 2.2mm;
+                top: 0.4mm;
+                font-style: italic;
+                font-weight: 700;
+                color: #666;
+                font-size: 3.2mm;
+            }
+            .copy {
+                position: absolute;
+                right: 21mm;
+                top: -0.7mm;
+                font-style: italic;
+                color: #777;
+                font-size: 4mm;
+            }
+            .copy b {
+                color: #1474c4;
+                font-weight: 400;
+            }
+
+            .party {
+                margin-left: 15.7mm;
+                width: 145mm;
+            }
+            .party h2,
+            .section h2 {
+                font-size: 4.5mm;
+                margin: 0 0 2.2mm 0;
+                line-height: 1;
+                font-weight: 700;
+            }
+            .fieldrow {
+                display: flex;
+                align-items: flex-end;
+                gap: 1.2mm;
+                margin: 0 0 1.7mm 0;
+                min-height: 3.8mm;
+            }
+            .label {
+                white-space: nowrap;
+            }
+            .dots {
+                flex: 1;
+                border-bottom: 0.35mm dotted #555;
+                height: 3mm;
+            }
+            .fixeddots {
+                border-bottom: 0.35mm dotted #555;
+                height: 3mm;
+                display: inline-block;
+            }
+            .w12 {
+                width: 12mm;
+            }
+            .w18 {
+                width: 18mm;
+            }
+            .w22 {
+                width: 22mm;
+            }
+            .w28 {
+                width: 28mm;
+            }
+            .w34 {
+                width: 34mm;
+            }
+            .w44 {
+                width: 44mm;
+            }
+            .w52 {
+                width: 52mm;
+            }
+            .w62 {
+                width: 62mm;
+            }
+            .connector {
+                margin-left: 8.1mm;
+                margin-top: -0.5mm;
+                margin-bottom: 1.6mm;
+                font-style: italic;
+                font-weight: 700;
+                color: #666;
+            }
+            .buyer {
+                margin-top: 0;
+            }
+
+            .vehicle-wrap {
+                position: relative;
+                margin-top: 2.3mm;
+                padding-left: 15.7mm;
+            }
+            .for {
+                position: absolute;
+                left: 2.3mm;
+                top: 1.5mm;
+                font-style: italic;
+                font-weight: 700;
+                color: #666;
+                font-size: 3.2mm;
+            }
+            .vehicle-top {
+                display: flex;
+                align-items: flex-end;
+                gap: 2.5mm;
+            }
+            .vehicle-title {
+                font-size: 4.9mm;
+                font-weight: 700;
+                white-space: nowrap;
+                margin-bottom: 0.4mm;
+            }
+            .pricebox {
+                flex: 1;
+                border: 0.35mm solid #555;
+                height: 13.4mm;
+                padding: 1.2mm 2mm;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto auto;
+                column-gap: 3mm;
+                align-items: center;
+            }
+            .pricebox .ptitle {
+                font-size: 4.8mm;
+                font-weight: 700;
+                line-height: 0.92;
+            }
+            .pricebox .pleft {
+                font-size: 2.6mm;
+                font-weight: 700;
+                line-height: 1;
+            }
+            .pricebox .price-line {
+                border-bottom: 0.35mm dotted #555;
+                height: 3.3mm;
+                position: relative;
+            }
+            .pricebox .eur {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -1.7mm;
+                font-size: 4mm;
+                font-weight: 700;
+                background: #fff;
+                padding: 0 1.8mm;
+            }
+            .pricebox .euros {
+                text-align: right;
+                font-size: 2.7mm;
+            }
+
+            .section {
+                margin-left: 15.7mm;
+                width: 145mm;
+                margin-top: 2mm;
+            }
+            .twocol {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 8mm;
+                row-gap: 4mm;
+            }
+            .sm {
+                font-size: 2.85mm;
+            }
+            .row {
+                display: flex;
+                align-items: flex-end;
+                gap: 3mm;
+                margin-bottom: 1.8mm;
+            }
+            .checkline {
+                display: flex;
+                align-items: center;
+                gap: 1.3mm;
+                margin: 1.15mm 0;
+            }
+            .checkline.two {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2mm;
+            }
+            input[type="checkbox"] {
+
+                -webkit-appearance: none;
+
+                width: 3.2mm;
+                height: 3.2mm;
+
+                border: 0.28mm solid black;
+                background: #fff;
+
+                margin: 0;
+                flex: 0 0 auto;
+
+                position: relative;
+                cursor: pointer;
+            }
+            .damage {
+                margin-top: 1mm;
+                margin-left: 5.6mm;
+            }
+            .damage .dots {
+                display: block;
+                margin: 1.1mm 0;
+                width: 136mm;
+            }
+            .docs {
+                margin-top: 2.6mm;
+            }
+            .docs-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 7mm;
+                row-gap: 1.2mm;
+            }
+            .docs-grid label {
+                display: flex;
+                align-items: center;
+                gap: 1.2mm;
+                white-space: nowrap;
+            }
+            .payline {
+                display: flex;
+                align-items: flex-end;
+                gap: 1mm;
+                margin-top: 1.7mm;
+            }
+            .smallchecks {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5mm;
+                margin-top: 1.5mm;
+                font-size: 2.25mm;
+                line-height: 1.15;
+            }
+            .smallchecks label {
+                display: flex;
+                align-items: flex-start;
+                gap: 1.1mm;
+            }
+            .legal {
+                font-size: 2.65mm;
+                line-height: 1.18;
+                margin-top: 2.1mm;
+            }
+            .legal p {
+                margin: 0 0 1.1mm 0;
+            }
+            .received {
+                margin-top: 2.8mm;
+                font-size: 2.8mm;
+            }
+            .done {
+                display: flex;
+                align-items: flex-end;
+                gap: 1mm;
+                margin-top: 2.8mm;
+                font-size: 3.15mm;
+            }
+            .signatures {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                text-align: center;
+                margin-top: 3.2mm;
+                font-weight: 700;
+                font-size: 2.75mm;
+            }
+
+            .footer-note {
+                position: absolute;
+                left: 12.3mm;
+                right: 12.3mm;
+                bottom: 5.6mm;
+                height: 14.1mm;
+                border: 0.35mm solid #555;
+                padding: 2.1mm 3mm;
+                font-size: 2.18mm;
+                line-height: 1.13;
+            }
+            .footer-logo {
+                position: absolute;
+                right: 10.5mm;
+                bottom: 4.8mm;
+                width: 41.5mm;
+                height: auto;
+            }
+
+            @media print {
+                html,
+                body {
+                    background: #fff;
+                    padding: 0;
+                }
+                .page {
+                    margin: 0;
+                    box-shadow: none;
+                    page-break-after: always;
+                }
+                .page:last-child {
+                    page-break-after: auto;
+                }
+            }
+            input[type="checkbox"]:checked {
+                background: #fff;
+                border-color: #C98800;
+            }
+
+            input[type="checkbox"]:checked::after {
+                content: "✓";
+
+                position: absolute;
+                left: 50%;
+                top: 50%;
+
+                transform: translate(-50%, -57%);
+
+                color: #C98800;
+                font-size: 3.2mm;
+                font-weight: 900;
+                line-height: 1;
+            }
+        </style>
+    </head>
+    <body>
+   
+        <section class="page">
+            <div class="brand-header">
+                <img
+                    alt="{{site_setting('company_name')}}"
+                    src="data:image/jpeg;base64,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"
+                />
+            </div>
+            <div class="head">
+                <span class="head-line"></span>
+                <h1>Contrat de vente d’une voiture d’occasion</h1>
+                <span class="head-line"></span>
+            </div>
+            <div class="top-meta">
+                <span class="between">entre</span>
+            </div>
+
+            <div class="party">
+                <h2>Le vendeur</h2>
+                <div class="fieldrow"><span class="label" style="font-weight:bold;">Raison sociale :</span><span class="dots">{{site_setting('company_name')}}</span></div>
+                <div class="fieldrow"><span class="label" style="font-weight:bold;">Adresse :</span><span class="dots">{{site_setting('company_address')}}</span></div>
+                <div class="fieldrow">
+                    <span class="label" style="font-weight:bold;">CP :</span><span class="fixeddots w28">{{site_setting('company_cp')}}</span
+                    ><span class="label" style="margin-left: 5mm">Ville :</span><span class="dots">{{site_setting('company_city')}}</span>
+                </div>
+                <div class="fieldrow">
+                <span class="label" style="font-weight:bold;">Tél :</span><span class="dots">{{site_setting('company_phone')}}</span>
+                </div>
+                <div class="fieldrow">
+                    <span class="label" style="font-weight:bold;">Numéro SIRET :</span><span class="dots">{{site_setting('company_registration')}}</span>
+                </div>
+            </div>
+
+            <div class="connector">et</div>
+            <div class="party buyer">
+                <h2>L’acheteur</h2>
+                <div class="fieldrow"><span class="label" style="font-weight:bold;">Nom/Prénom :</span><span class="dots">{{reservation.customerName}}</span></div>
+               {% if reservation.receptionMode.name == 'DELIVERY' %}
+                    <div class="fieldrow"><span class="label" style="font-weight:bold;">Adresse :</span><span class="dots">{{reservation.deliveryAddress}}</span></div>
+                    <div class="fieldrow">
+                        <span class="label" style="font-weight:bold;">CP :</span><span class="fixeddots w28">{{reservation.deliveryPostalCode}}</span
+                        ><span class="label" style="margin-left: 5mm">Ville :</span><span class="dots">{{reservation.deliveryCity}}</span>
+                    </div>
+                {% else %}
+                    <div class="fieldrow"><span class="label" style="font-weight:bold;">Adresse :</span><span class="dots"></span></div>
+                    <div class="fieldrow">
+                        <span class="label" style="font-weight:bold;">CP :</span><span class="fixeddots w28"></span
+                        ><span class="label" style="margin-left: 5mm">Ville :</span><span class="dots"></span>
+                    </div>
+                {% endif %}
+                <div class="fieldrow">
+                   <span class="label" style="margin-left: 2mm">Tél :</span><span class="dots">{{reservation.customerPhone}}</span>
+                </div>
+                <div class="fieldrow">
+                    <span class="label" style="font-weight:bold;">Numéro Carte identité/Passeport :</span><span class="dots">{{cardIdNumber}}</span>
+                </div>
+            </div>
+
+            <div class="vehicle-wrap">
+                <span class="for">pour</span>
+                <div class="vehicle-top">
+                    <div class="vehicle-title">Le véhicule</div>
+                    <div class="pricebox">
+                        <div>
+                            <div class="ptitle">Prix convenu</div>
+                            <div class="pleft">(en chiffres et en lettres)</div>
+                        </div>
+                        <div>
+                            <div class="price-line"><span class="eur">{{reservation.vehicle.price}} €</span></div>
+                            <div class="euros">euros</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section sm">
+                <div class="twocol">
+                    <div class="row"><span style="font-weight:bold;">Marque (D.1) :</span><span class="dots" style="font-weight:bold;">{{reservation.vehicle.brand}} </span></div>
+                    <div class="row"><span style="font-weight:bold;">Type (D.2):</span><span class="dots"></span></div>
+                    <div class="row"><span style="font-weight:bold;">Modèle (D.3) :</span><span class="dots">{{reservation.vehicle.model}} </span></div>
+                    <div class="row"><span style="font-weight:bold;">Puissance (P.6):</span><span class="dots">{{reservation.vehicle.power}} ch  / {{reservation.vehicle.powerCv}} cv</span></div>
+                </div>
+                <div class="twocol">
+                    <div class="row"><span style="font-weight:bold;">Numéro d’immatriculation :</span><span class="dots">{{reservation.vehicle.immatriculation ?? 'N/A'}}</span></div>
+                    <div class="row">
+                        <span style="font-weight:bold;">Date de 1ère mise en circulation (B) :</span><span class="fixeddots w34">{{reservation.vehicle.datePremiereMiseEnCirculation ?? 'N/A'}}</span>
+                    </div>
+                </div>
+                <div class="twocol">
+                    <div class="row"><span style="font-weight:bold;">Numéro de Chassis - Code VIN (E) :</span><span class="dots">{{reservation.vehicle.vim ?? 'N/A'}}</span></div>
+                    <div class="row"><span style="font-weight:bold;">Kilométrage :</span><span class="dots">{{reservation.vehicle.mileage ?? 'N/A'}}</span><span>km</span></div>
+                </div>
+                <div class="row">
+                    <span style="font-weight:bold;">Certificat de Contrôle Technique valable jusqu’au (mois/année) :</span
+                    ><span class="dots">{{reservation.vehicle.ctValidity ?? 'N/A'}}</span>
+                </div>
+                <div class="row">
+                    <span style="font-weight:bold;">Nombre de propriétaires précédents :</span><span class="fixeddots w18">{{reservation.vehicle.nbOwner ?? 'N/A'}}</span
+                    ><span style="margin-left: 5mm"><input type="checkbox" checked /> moteur d’origine</span
+                    ><span style="margin-left: 4mm"><input type="checkbox" /> moteur changé</span>
+                </div>
+
+                <div class="checkline two">
+                    <label><input type="checkbox" checked/> le véhicule n’est pas accidenté</label
+                    ><label><input type="checkbox" checked/> N’a pas de défauts connus</label>
+                </div>
+                <div class="checkline">
+                    <label><input type="checkbox" /> présente les défauts ou dommages suivants :</label>
+                </div>
+                <div class="damage"><span class="dots"></span><span class="dots"></span></div>
+                <div class="checkline two" style="margin-top: 1.8mm">
+                    <label><input type="checkbox" /> le véhicule n’est pas importé</label
+                    ><label><input type="checkbox" checked/> véhicule importé (UE ou autre)</label>
+                </div>
+
+                <div class="docs">
+                    <h2>Documents à remettre à l’acheteur</h2>
+                    <div class="docs-grid">
+                        <label><input type="checkbox" checked/> Certificat de cession</label>
+                        <label><input type="checkbox" checked/> Certificat d’immatriculation (carte grise)</label>
+                        <label><input type="checkbox" checked/> Certificat de non-gage (situation administrative)</label>
+                        <label><input type="checkbox" checked/> Certificat de visite Contrôle technique</label>
+                        <label><input type="checkbox"checked /> Certificat COC (si import UE ou autre)</label>
+                        <label><input type="checkbox" checked/> Remise des clefs</label>
+                    </div>
+                    <div class="payline">
+                        <span><input type="checkbox" checked /> Le vendeur confirme qu’il a reçu la somme de</span
+                        ><span class="dots" style="font-weight:bold;font-size:14px;">{{reservation.vehicle.price}}</span><span>€</span>
+                    </div>
+                    <div class="smallchecks">
+                        <label
+                            ><input type="checkbox" checked /> Le vendeur s’engage à faire la télédéclaration de la vente du
+                            véhicule sur le site : ants.gouv.fr</label
+                        >
+                        <label
+                            ><input type="checkbox" checked/> L’acheteur s’engage à procéder au transfert du certificat
+                            d’immatriculation dans les délais légaux.</label
+                        >
+                    </div>
+                </div>
+                <div class="legal">
+                    <p>
+                        Le véhicule est vendu avec une garantie de 12 mois , dans l’état dans lequel il se trouve et connu de
+                        l’acheteur à l’issu d’un essai sur route et d’un examen approfondi.
+                    </p>
+                    <p>
+                        Le vendeur affirme que le véhicule fourni est sa propriété, libre de toutes charges et
+                        restrictions.
+                    </p>
+                </div>
+                <div class="received">Chaque partie a reçu un exemplaire du présent document.</div>
+                <div class="done">
+                    <span>Fait à</span><span class="fixeddots w44">{{site_setting('company_city')}}</span><span>le :</span
+                    ><span class="fixeddots w34">{{dateEtablissementContrat}}</span><span>à</span><span class="fixeddots w12">{{heureContrat}}</span
+                    ><span>heures</span><span class="fixeddots w12">{{minuteContrat}}</span><span>minutes.</span>
+                </div>
+                <div class="signatures">
+                    <div>Signature du vendeur</div>
+                    <div> 
+                        Signature de l’acheteur 
+                    </div>
+                </div>
+            </div>
+            <div class="footer-note">
+                Le présent contrat formalise la vente du véhicule décrit ci-dessus entre le vendeur et l’acheteur. Les
+                parties déclarent avoir pris connaissance de l’ensemble des informations relatives au véhicule, aux
+                conditions de la vente et aux documents remis. Par leur signature, elles reconnaissent accepter sans
+                réserve les conditions du présent contrat et attestent de l’exactitude des informations qui y figurent.
+            </div>
+            
+        </section>
+    </body>
+</html>

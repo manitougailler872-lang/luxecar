@@ -1,0 +1,64 @@
+
+{% set _size = size|default('md') %}
+{% set _dim = _size == 'sm' ? 'w-6 h-6' : (_size == 'lg' ? 'w-10 h-10' : 'w-8 h-8') %}
+{% set _text = _size == 'sm' ? 'text-sm' : (_size == 'lg' ? 'text-2xl' : 'text-lg') %}
+
+<div style="background:#C98800 !important;color:#17171a;" class="w-full text-black overflow-hidden group">
+    <div class="flex whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none w-max">
+        <div class="flex items-center text-black shrink-0 py-2 px-4 gap-8 text-sm font-medium">
+            <span>Livraison à domicile disponible sur tout le territoire</span>
+            <span>•</span>
+            <span>Réservez en ligne — Retrait au garage ou livraison</span>
+            <span>•</span>
+            <span>Paiement 100% sécurisé par virement bancaire</span>
+            <span>•</span>
+        </div>
+        <!-- Bloc dupliqué à l'identique pour un défilement en boucle sans coupure -->
+        <div class="flex items-center text-black shrink-0 py-2 px-4 gap-8 text-sm font-medium" aria-hidden="true">
+            <span>Livraison à domicile disponible sur tout le territoire</span>
+            <span>•</span>
+            <span>Réservez en ligne — Retrait au garage ou livraison</span>
+            <span>•</span>
+            <span>Paiement 100% sécurisé par virement bancaire</span>
+            <span>•</span>
+        </div>
+    </div>
+</div>
+<nav class="bg-luxe-black border-b border-luxe-border sticky top-0 z-40 backdrop-blur" x-data="{open:false}">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="{{ path('home') }}">{% include 'components/_logo.html.twig' %}</a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+            {% set active = app.request.attributes.get('_route') %}
+            <a href="{{ path('home') }}" class="{{ active == 'home' ? 'text-luxe-text' : 'text-luxe-muted' }} hover:text-luxe-orange transition">Accueil</a>
+            <a href="{{ path('vehicle_list') }}"  class="{{ active starts with 'vehicle_' ? 'text-luxe-text' : 'text-luxe-muted' }} hover:text-luxe-orange transition">Notre collection</a>
+            <a href="{{ path('piece_list') }}"  class="{{ active starts with 'piece_' ? 'text-luxe-text' : 'text-luxe-muted' }} hover:text-luxe-orange transition">Pièces Autos</a>
+            {#            <a href="{{ path('track_my_reservation') }}"  class="{{ active starts with 'track_' ? 'text-luxe-text' : 'text-luxe-muted' }} hover:text-luxe-orange transition">Suivre ma réservation</a>#}
+            <a href="{{ path('review_index') }}"  class="text-luxe-muted hover:text-luxe-orange transition">Avis</a>
+            <a href="#contact"  class="text-luxe-muted hover:text-luxe-orange transition">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <a href="{{ path('vehicle_list') }}" aria-label="Rechercher" class="w-10 h-10 rounded-full border border-luxe-border flex items-center justify-center text-luxe-muted hover:text-luxe-orange hover:border-luxe-orange transition">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 4.5a6.25 6.25 0 104.44 10.65l4.28 4.28a.75.75 0 101.06-1.06l-4.28-4.28A6.25 6.25 0 0010.75 4.5ZM6 10.75a4.75 4.75 0 119.5 0 4.75 4.75 0 01-9.5 0Z"/></svg>
+            </a>
+
+            {# Mobile menu toggle #}
+            <button type="button" class="md:hidden w-10 h-10 rounded-full border border-luxe-border flex items-center justify-center text-luxe-muted hover:text-luxe-orange hover:border-luxe-orange transition" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75Zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12Zm.75 4.5a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5H3.75Z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    {# Mobile menu drawer #}
+    <div id="mobile-menu" class="hidden md:hidden border-t border-luxe-border bg-luxe-black-alt">
+        <div class="px-4 py-4 space-y-1 text-sm font-medium">
+            <a href="{{ path('home') }}"          class="block px-3 py-2 rounded-xl text-luxe-muted hover:bg-luxe-card hover:text-luxe-text transition">Accueil</a>
+            <a href="{{ path('vehicle_list') }}"  class="block px-3 py-2 rounded-xl text-luxe-muted hover:bg-luxe-card hover:text-luxe-text transition">Notre collection</a>
+            <a href="{{ path('piece_list') }}"  class="{{ active starts with 'piece_' ? 'text-luxe-text' : 'text-luxe-muted' }} hover:text-luxe-orange transition">Pièces Autos</a>
+{#            <a href="{{ path('track_my_reservation') }}"  class="block px-3 py-2 rounded-xl text-luxe-muted hover:bg-luxe-card hover:text-luxe-text transition">Suivre ma réservation</a>#}
+            <a href="{{ path('review_index') }}"  class="block px-3 py-2 rounded-xl text-luxe-muted hover:bg-luxe-card hover:text-luxe-text transition">Avis</a>
+            <a href="#contact" class="block px-3 py-2 rounded-xl text-luxe-muted hover:bg-luxe-card hover:text-luxe-text transition">Contact</a>
+        </div>
+    </div>
+</nav>

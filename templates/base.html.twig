@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site_setting('company_name') }} — Réservation automobile{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Plateforme premium de réservation de véhicules — {{ site_setting('company_name') }}.{% endblock %}">
+    {% block meta_head %}{% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-luxe-black text-luxe-text antialiased min-h-screen flex flex-col">
+    {% block navbar %}{% include 'components/_navbar.html.twig' %}{% endblock %}
+    {% for label, messages in app.flashes(['success','error','info','warning']) %}
+        {% for msg in messages %}
+            {% include 'components/_flash.html.twig' with {label: label, msg: msg} %}
+        {% endfor %}
+    {% endfor %}
+
+    <main class="flex-1">
+        {% block body %}{% endblock %}
+    </main>
+
+    {% block footer %}{% include 'components/_footer.html.twig' %}{% endblock %}
+
+    <script src="{{ asset('build/app.js') }}" defer></script>
+    {% block javascripts %}{% endblock %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+
+    {# ========== NOTIFICATION VISITEURS EN LIGNE ========== #}
+{# ========== NOTIFICATION VISITEURS EN LIGNE ========== #}
+<div id="visitor-notif"
+     class="fixed top-6 left-6 z-50 opacity-0 translate-y-4 pointer-events-none mt-2 transition-all duration-500 max-w-xs mx-auto"
+     role="status"
+     aria-live="polite">
+
+    <div class="bg-luxe-card border border-luxe-border rounded-2xl shadow-2xl shadow-black/40 backdrop-blur px-4 py-3 flex items-center gap-3 pointer-events-auto">
+        {# Icône avec pastille verte pulsée #}
+        <div class="relative shrink-0">
+            <div class="w-10 h-10 rounded-full bg-luxe-orange-soft border border-luxe-orange/30 flex items-center justify-center text-luxe-orange">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10Zm-8 20a8 8 0 1116 0H4Z"/>
+                </svg>
+            </div>
+            <span class="absolute -top-0.5 -right-0.5 flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-luxe-card"></span>
+            </span>
+        </div>
+
+        <div class="min-w-0 flex-1">
+            <div class="text-sm text-luxe-text font-medium leading-tight">
+                <span id="visitor-count" class="text-luxe-orange font-display font-bold text-base">763</span>
+                <span>personnes consultent le site</span>
+            </div>
+            <div class="text-[10px] text-luxe-muted mt-0.5">Mis à jour à l'instant</div>
+        </div>
+
+        <button type="button" onclick="document.getElementById('visitor-notif').dataset.closed='1';document.getElementById('visitor-notif').classList.add('hidden')" class="text-luxe-muted hover:text-luxe-orange transition shrink-0" aria-label="Fermer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.3 5.3a1 1 0 011.4 0L12 10.6l5.3-5.3a1 1 0 111.4 1.4L13.4 12l5.3 5.3a1 1 0 01-1.4 1.4L12 13.4l-5.3 5.3a1 1 0 01-1.4-1.4L10.6 12 5.3 6.7a1 1 0 010-1.4Z"/></svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+    function toggleSpecs(){
+        const panel = document.getElementById('specsPanel');
+        const chevron = document.getElementById('specsChevron');
+        panel.classList.toggle('hidden');
+        chevron.style.transform = panel.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(90deg)';
+    }
+</script>
+<script>
+(function () {
+    const notif    = document.getElementById('visitor-notif');
+    const counter  = document.getElementById('visitor-count');
+    if (!notif || !counter) return;
+
+    const START_COUNT   = 763;
+    const INCREMENT     = 4;
+    const INTERVAL_MS   = 10000;   // Cycle 10s
+    const VISIBLE_MS    = 5000;    // Reste visible 5s à chaque cycle
+
+    // Persistance du compteur entre pages
+    let count = parseInt(sessionStorage.getItem('visitorCount') || START_COUNT, 10);
+    counter.textContent = count.toLocaleString('fr-FR');
+
+    function show() {
+        if (notif.dataset.closed === '1') return;
+        notif.classList.remove('opacity-0', 'translate-y-4');
+        notif.classList.add('opacity-100', 'translate-y-0');
+    }
+
+    function hide() {
+        notif.classList.remove('opacity-100', 'translate-y-0');
+        notif.classList.add('opacity-0', 'translate-y-4');
+    }
+
+    function tick() {
+        // 1. Incrémente le compteur
+        count += INCREMENT;
+        sessionStorage.setItem('visitorCount', count.toString());
+
+        // 2. Micro-animation sur le nombre
+        counter.style.transform = 'scale(1.15)';
+        counter.style.transition = 'transform 0.2s ease-out';
+        counter.textContent = count.toLocaleString('fr-FR');
+        setTimeout(() => { counter.style.transform = 'scale(1)'; }, 200);
+
+        // 3. Affiche, puis masque après VISIBLE_MS
+        show();
+        setTimeout(hide, VISIBLE_MS);
+    }
+
+    // Première apparition ~1s après chargement
+    setTimeout(tick, 1000);
+
+    // Puis toutes les 10s
+    setInterval(tick, INTERVAL_MS);
+})();
+</script>
+<script src="//code.tidio.co/azzi1tnmbbilqorbq8zly5rtd03qtenp.js" async></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% set _size = size|default('md') %}
+{% set _dim = _size == 'sm' ? 'w-6 h-6' : (_size == 'lg' ? 'w-10 h-10' : 'w-8 h-8') %}
+{% set _text = _size == 'sm' ? 'text-sm' : (_size == 'lg' ? 'text-2xl' : 'text-lg') %}
+{% set logo =  site_setting('company_logo') %}
+    {% if logo is empty %}
+        {% set logo = 'default_company_logo.png' %}
+    {% endif %}
+<span class="inline-flex items-center gap-2 font-semibold {{ _text }} font-display tracking-wide {{ class|default('') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="{{ _dim }}" aria-hidden="true">
+        <defs>
+            <linearGradient id="luxeLogoG{{ random() }}" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ec5a13"/>
+                <stop offset="100%" stop-color="#ff8b4d"/>
+            </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#luxeLogoG{{ random() }})"/>
+        {# Stylized car silhouette #}
+        <path d="M8 20h16M9.5 17l1.2-3.6a2 2 0 011.9-1.4h6.8a2 2 0 011.9 1.4L22.5 17m-13 0v2a1 1 0 001 1h.5a1 1 0 001-1v-1m8 1v1a1 1 0 001 1h.5a1 1 0 001-1v-2m-11 0h11" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12.5" cy="19" r="1.1" fill="white"/>
+        <circle cx="19.5" cy="19" r="1.1" fill="white"/>
+    </svg>
+    <span class="text-xl">LUXE <span class="text-luxe-orange">CAR</span></span>
+</span>

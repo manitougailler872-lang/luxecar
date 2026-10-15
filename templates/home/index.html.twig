@@ -1,0 +1,299 @@
+{% extends 'base.html.twig' %}
+{% block title %}LUXE CAR — Trouvez le véhicule de vos rêves{% endblock %}
+
+{% block body %}
+{# ========== HERO ========== #}
+<section class="relative overflow-hidden bg-luxe-black">
+    <!-- Image de fond avec dégradé -->
+    <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="
+            background-position:top;
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(11,11,12,0.95) 0%,
+                    rgba(11,11,12,0.75) 45%,
+                    rgba(11,11,12,0.15) 100%
+                ),
+                url('{{ asset('images/bg-hero.jpg') }}');
+        "
+    ></div>
+    <!-- Contenu -->
+    <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div class="max-w-xl fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-display font-bold leading-tight mb-6 text-white">
+                TROUVEZ LE<br>
+                VÉHICULE DE VOS<br>
+                RÊVES CHEZ<br>
+
+                <span class="text-luxe-orange">
+                    LUXE CAR
+                </span>
+            </h1>
+
+            <p class="text-sm text-white/80 mb-8 max-w-md leading-relaxed">
+                Des véhicules sélectionnés avec soin, au meilleur prix.
+                Réservez en ligne en toute simplicité.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+
+                <a
+                    href="{{ path('vehicle_list') }}"
+                    class="btn-gold"
+                >
+                    Notre collection
+                </a>
+
+                <a
+                    href="#contact"
+                    class="btn-outline"
+                >
+                    Nous contacter
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+    {# ========== FEATURES (3 columns) ========== #}
+    <section class="max-w-7xl mx-auto px-6 py-14">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-luxe-orange-soft border border-luxe-orange/30 flex items-center justify-center text-luxe-orange shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.6 1.5a1.5 1.5 0 00-1.2 0L4.6 4.5A2.5 2.5 0 003 6.8v4.9C3 16.7 5.8 20.9 12 22.5c6.2-1.6 9-5.8 9-10.8V6.8a2.5 2.5 0 00-1.6-2.3l-6.8-3ZM16.8 10l-5.5 5.5a1 1 0 01-1.4 0l-2.8-2.8a1 1 0 111.4-1.4l2.1 2.1 4.8-4.8a1 1 0 011.4 1.4Z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-display font-semibold">Véhicules vérifiés</h3>
+                    <p class="text-xs text-luxe-muted mt-0.5">Qualité et historique certifiés</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-luxe-orange-soft border border-luxe-orange/30 flex items-center justify-center text-luxe-orange shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 2.5a.75.75 0 01.75.75v1.25h6.5V3.25a.75.75 0 011.5 0V4.5h1.75A2.5 2.5 0 0121 7v11a2.5 2.5 0 01-2.5 2.5h-13A2.5 2.5 0 013 18V7a2.5 2.5 0 012.5-2.5h1.75V3.25A.75.75 0 018 2.5ZM5.5 6a1 1 0 00-1 1v2h15V7a1 1 0 00-1-1h-13Zm14 4.5h-15V18a1 1 0 001 1h13a1 1 0 001-1v-7.5Z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-display font-semibold">Réservation sécurisée</h3>
+                    <p class="text-xs text-luxe-muted mt-0.5">Payez 100% sécurisé</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-luxe-orange-soft border border-luxe-orange/30 flex items-center justify-center text-luxe-orange shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 6A1.5 1.5 0 013 4.5h12A1.5 1.5 0 0116.5 6v3H19c.5 0 .96.24 1.25.64l2.5 3.4c.16.22.25.48.25.76V16.5A1.5 1.5 0 0121.5 18h-1.05a3 3 0 01-5.9 0h-4.1a3 3 0 01-5.9 0H3A1.5 1.5 0 011.5 16.5V6ZM6.5 18a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0Zm10 0a1.5 1.5 0 103 0 1.5 1.5 0 00-3 0Zm.5-7.5V15h4v-1.16L18.63 10.5H17Z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-display font-semibold">Livraison à domicile</h3>
+                    <p class="text-xs text-luxe-muted mt-0.5">Partout où vous êtes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {# ========== POPULAR BRANDS (NEW) ========== #}
+    <section class="max-w-7xl mx-auto px-6 py-14 border-t border-luxe-border/60">
+        <h2 class="text-lg font-display font-semibold mb-8 tracking-wide">MARQUES POPULAIRES</h2>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+            {% for b in ['Peugeot','Renault','Volkswagen','KIA','Toyota','BMW','Mercedes','Audi'] %}
+                {% if b == 'Audi' %}
+                    {% set logo = 'audi.svg' %}
+                {% elseif b == 'Renault' %}
+                    {% set logo = 'renault.svg' %}
+                {% elseif b == 'Peugeot' %}
+                    {% set logo = 'peugeot.svg' %}
+                {% elseif b == 'BMW' %}
+                    {% set logo = 'bmw.svg' %}
+                {% elseif b == 'Mercedes' %}
+                    {% set logo = 'mercedes.svg' %}
+                {% elseif b == 'KIA' %}
+                    {% set logo = 'kia.png' %}
+                {% elseif b == 'Toyota' %}
+                    {% set logo = 'toyota.png' %}
+                {% elseif b == 'Volkswagen' %}
+                    {% set logo = 'volks.png' %}
+                {% else %}
+                    {% set logo = 'renault.svg' %}
+                {% endif %}
+                <a href="{{ path('vehicle_list', {brand: b}) }}" class="card-luxe gap-2 bg-white border-1 border-luxe-border px-4 py-6 flex items-center justify-center text-luxe-muted hover:text-luxe-orange hover:border-luxe-orange transition font-display font-semibold text-sm">
+                    <img
+                        src="{{ asset('images/marques/' ~ logo) }}"
+                        alt="LUXE CAR"
+                        class="h-8 w-10 mx-1 text-white inline-block object-contain"
+                    >
+                    {{ b }}
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+      {# ========== RESERVE (renamed) ========== #}
+    <section class="max-w-7xl mx-auto px-6 py-14 ">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-display font-bold">Déja réservés</h2>
+                <p class="text-sm text-luxe-muted mt-1">Sélection récente ajoutée au catalogue</p>
+            </div>
+            <a href="{{ path('vehicle_list') }}" class="text-luxe-orange text-sm hover:underline font-medium">Tout voir →</a>
+        </div>
+        {% if reserved|length == 0 %}
+            <div class="text-center py-16 card-luxe">
+                <p class="text-luxe-muted">Aucun véhicle pour le moment.</p>
+            </div>
+        {% else %}
+             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {% for v in reserved|slice(0, 8) %}
+                    {% include 'components/_vehicle_card.html.twig' with {vehicle: v, cta: 'Réservez'} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+    {# ========== NOUVELLE COLLECTION (renamed) ========== #}
+    <section class="max-w-7xl mx-auto px-6 py-14 ">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-display font-bold">Nouvelle collection</h2>
+                <p class="text-sm text-luxe-muted mt-1">Sélection récente ajoutée au catalogue</p>
+            </div>
+            <a href="{{ path('vehicle_list') }}" class="text-luxe-orange text-sm hover:underline font-medium">Tout voir →</a>
+        </div>
+        {% if featured_vehicles|length == 0 %}
+            <div class="text-center py-16 card-luxe">
+                <p class="text-luxe-muted">Aucun véhicule pour le moment.</p>
+            </div>
+        {% else %}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {% for v in featured_vehicles|slice(0, 8) %}
+                    {% include 'components/_vehicle_card.html.twig' with {vehicle: v, cta: 'Réservez'} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+  
+
+    {# ========== LES PLUS VENDUS  (renamed) ========== #}
+    {% if featured_good_deals|length > 0 %}
+        <section class="max-w-7xl mx-auto px-6 py-14 ">
+            <div class="flex items-end justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-display font-bold">Les bonnes affaires</h2>
+                    <p class="text-sm text-luxe-muted mt-1">Une réduction exceptionnelle sur cete collection de véhicule</p>
+                </div>
+                <a href="{{ path('vehicle_list') }}" class="text-luxe-orange text-sm hover:underline font-medium">Tout voir →</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {% for v in featured_good_deals|slice(0, 8) %}
+                    {% include 'components/_vehicle_card.html.twig' with {vehicle: v, cta: 'Réservez'} %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+
+    {# ========== NOUVELLE COLLECTION (renamed) ========== #}
+    <section class="max-w-7xl mx-auto px-6 py-14 ">
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-display font-bold">Pièces Autos</h2>
+                <p class="text-sm text-luxe-muted mt-1">Sélection récente ajoutée au catalogue</p>
+            </div>
+            <a href="{{ path('piece_list') }}" class="text-luxe-orange text-sm hover:underline font-medium">Tout voir →</a>
+        </div>
+        {% if pieces|length == 0 %}
+            <div class="text-center py-16 card-luxe">
+                <p class="text-luxe-muted">Aucune pièce pour le moment.</p>
+            </div>
+        {% else %}
+             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {% for v in pieces|slice(0, 8) %}
+                    {% include 'components/_piece_card.html.twig' with {vehicle: v, cta: 'Réservez'} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+
+    {# ========== NOTRE EXPERTISE À VOTRE SERVICE ========== #}
+    <section class="max-w-7xl mx-auto px-6 py-14 ">
+        <div class="card-luxe p-6 md:p-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center">
+
+                {# LEFT — image #}
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px]">
+                    <img src="{{ asset('images/cars/family-happy-with-get-car.jpg') }}"
+                         alt="Notre expertise à votre service"
+                         class="w-full h-full object-cover"
+                         loading="lazy">
+                </div>
+
+                {# RIGHT — title + 2x2 cards #}
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 md:mb-8">
+                        Notre expertise à votre service
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {% for feature in [
+                            {t: 'Le meilleur prix',      d: 'Une analyse objective des prix des véhicules pour vous aider', icon: 'search'},
+                            {t: 'En toute sérénité',     d: 'Une visibilité complète sur l\'historique du véhicule',        icon: 'clock'},
+                            {t: 'Adapté à votre budget', d: 'Un budget maîtrisé avec notre simulateur de financement',       icon: 'euro'},
+                            {t: 'Vous conseiller',       d: 'Une projection claire sur les futurs entretiens à prévoir',    icon: 'wrench'},
+                        ] %}
+                            <div class="bg-luxe-black-alt border border-luxe-border rounded-2xl p-5 hover:border-luxe-orange transition-colors duration-200">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-9 h-9 rounded-full bg-luxe-orange-soft border border-luxe-orange/30 flex items-center justify-center text-luxe-orange shrink-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
+                                            {% if feature.icon == 'search' %}
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 4.5a6.25 6.25 0 104.44 10.65l4.28 4.28a.75.75 0 101.06-1.06l-4.28-4.28A6.25 6.25 0 0010.75 4.5ZM6 10.75a4.75 4.75 0 119.5 0 4.75 4.75 0 01-9.5 0Z"/>
+                                            {% elseif feature.icon == 'clock' %}
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20Zm.75 5a.75.75 0 00-1.5 0v5c0 .2.08.39.22.53l3 3a.75.75 0 101.06-1.06L12.75 11.7V7Z"/>
+                                            {% elseif feature.icon == 'euro' %}
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 3.5a8.5 8.5 0 106.55 13.94.75.75 0 011.15.96A10 10 0 113.5 12c0-5.52 4.48-10 10-10 2.68 0 5.12 1.06 6.9 2.78a.75.75 0 11-1.04 1.08A8.47 8.47 0 0013.5 3.5ZM6 9.75A.75.75 0 016.75 9h6a.75.75 0 010 1.5h-6A.75.75 0 016 9.75Zm0 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75Z"/>
+                                            {% elseif feature.icon == 'wrench' %}
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4 2.3a5.5 5.5 0 00-6.9 6.9L3 14.7a2 2 0 000 2.83l3.47 3.47a2 2 0 002.83 0l5.5-5.5a5.5 5.5 0 006.9-6.9l-3.35 3.35a1.5 1.5 0 01-2.12 0l-1.42-1.42a1.5 1.5 0 010-2.12L18.15 5.06 15.4 2.3Z"/>
+                                            {% endif %}
+                                        </svg>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <h3 class="font-display font-semibold text-sm md:text-base mb-1">{{ feature.t }}</h3>
+                                        <p class="text-xs md:text-sm text-luxe-muted leading-relaxed">{{ feature.d }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+{# ========== COMMENT ÇA MARCHE ========== #}
+<section id="comment-ca-marche" class="max-w-7xl mx-auto px-6 py-14 border-t border-luxe-border/60">
+    <div class="flex items-center gap-2 mb-8">
+        <h2 class="text-2xl md:text-3xl font-display font-bold">Comment ça marche</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 text-luxe-orange" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10Zm-1-6.75a1 1 0 112 0V14a1 1 0 11-2 0v-.25Zm.05-6.5A2.75 2.75 0 0114.75 10c0 .95-.55 1.6-1.32 2.11-.5.33-.68.5-.68.89v.25a.75.75 0 01-1.5 0V13c0-.9.53-1.5 1.35-2.05.53-.35.65-.55.65-.95a1.25 1.25 0 10-2.5 0 .75.75 0 01-1.5 0A2.75 2.75 0 0111.05 7.25Z"/></svg>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {% for step in [
+            {n: 1, t: 'Choisissez', d: 'Parcourez le catalogue et sélectionnez votre véhicule.'},
+            {n: 2, t: 'Réservez',   d: 'Remplissez votre demande de réservation en ligne.'},
+            {n: 3, t: 'Payez un accompte de 10 à 20%',  d: 'Effectuez le virement des frais de réservation.'},
+            {n: 4, t: 'Recevez',    d: 'Retrait au garage ou livraison à domicile.'},
+        ] %}
+            <div class="card-luxe p-6 reveal">
+                <div class="text-luxe-orange font-display text-3xl font-bold mb-2">0{{ step.n }}</div>
+                <div class="font-display font-semibold mb-1">{{ step.t }}</div>
+                <p class="text-sm text-luxe-muted">{{ step.d }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<section id="comment-ca-marche" class="max-w-7xl mx-auto px-6 py-14 border-t border-luxe-border/60">
+        <h1 class="text-3xl font-semibold mb-8">Avis de nos clients</h1>
+        <div class="grid md:grid-cols-2 gap-4 mb-12">
+            {% for r in reviews %}
+                {% include 'components/_review_card.html.twig' with {review: r} %}
+            {% endfor %}
+        </div>
+</section>
+{% endblock %}
