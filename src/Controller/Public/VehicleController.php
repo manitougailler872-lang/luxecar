@@ -45,10 +45,10 @@ class VehicleController extends AbstractController
             $qb->andWhere('v.brand = :brand')->setParameter('brand', $brand);
         }
         if ($transmission !== '') {
-            $qb->andWhere('v.transmission = :transmission')->setParameter('transmission', $brand);
+            $qb->andWhere('v.transmission = :transmission')->setParameter('transmission', $transmission);
         }
         if ($category !== '') {
-            $qb->andWhere('v.category = :category')->setParameter('category', $brand);
+            $qb->andWhere('v.category = :category')->setParameter('category', $category);
         }
         if ($year !== null && $year !== '' && (int) $year > 1900) {
             $qb->andWhere('v.year = :year')->setParameter('year', (int) $year);

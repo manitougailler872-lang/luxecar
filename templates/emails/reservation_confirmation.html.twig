@@ -67,28 +67,41 @@
                             {% else %}
                                 <tr><td style="color:#6b6b70;padding:8px 0;border-top:1px solid #e5e7eb;">Livraison</td><td style="padding:8px 0;border-top:1px solid #e5e7eb;text-align:right;">{{ reservation.deliveryAddress }}, {{ reservation.deliveryPostalCode }} {{ reservation.deliveryCity }}</td></tr>
                             {% endif %}
-                            <tr>
-                                <td colspan="2"
-                                    align="center"
-                                    style="text-align:center; padding:24px 0;">
-                                    <a href="{{ url('reservation_pay', {uuid: reservation.uuid}) }}"
-                                    target="_blank"
-                                    style="
-                                        display:inline-block;
-                                        background-color:#000000;
-                                        color:#ffffff;
-                                        font-family:Arial,sans-serif;
-                                        font-weight:600;
-                                        text-decoration:none;
-                                        padding:14px 32px;
-                                        border-radius:100px;
-                                        font-size:14px;
-                                        text-align:center;
-                                    ">
-                                        Payer par carte bancaire
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="2" align="center" style="text-align:center; padding:24px 0 0;">
+                                        <img src="https://luxecar-auto.fr/images/payments/visapng.webp"
+                                            alt="Visa" width="44" height="28"
+                                            style="display:inline-block; vertical-align:middle; border:0; outline:none; margin-right:12px;">
+                                        <img src="https://luxecar-auto.fr/images/payments/mastercard.png"
+                                            alt="Mastercard" width="44" height="28"
+                                            style="display:inline-block; vertical-align:middle; border:0; outline:none;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center" style="text-align:center; padding:16px 0 24px;">
+                                        <a href="{{ url('reservation_pay', {uuid: reservation.uuid}) }}"
+                                        target="_blank"
+                                        style="
+                                            display:inline-block;
+                                            background-color:#000000;
+                                            color:#ffffff;
+                                            font-family:Arial,sans-serif;
+                                            font-weight:600;
+                                            text-decoration:none;
+                                            padding:14px 32px;
+                                            border-radius:100px;
+                                            font-size:14px;
+                                            text-align:center;
+                                        ">
+                                            Payer par carte bancaire
+                                        </a>
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td colspan="2" align="center">
+                                         Ou
+                                    </td>
+                                </tr>
                         </table>
                     </td>
                 </tr>
