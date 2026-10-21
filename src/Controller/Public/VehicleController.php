@@ -32,7 +32,7 @@ class VehicleController extends AbstractController
         $priceMax   = $request->query->get('price_max');
         $categories = (array) $request->query->all('categories');
         $transmission =  trim((string) $request->query->get('transmission', ''));
-        $category = trim((string) $request->query->get('category', ''));
+        $category = trim((string) $request->query->get('categorie', ''));
 
         $qb = $repo->createQueryBuilder('v')->andWhere('v.published = true');
         $qb = $repo->createQueryBuilder('v')->andWhere('v.vehicleType = :vehicleType')->setParameter('vehicleType', VehicleTypeEnum::CAR->value);
