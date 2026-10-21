@@ -20,7 +20,6 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home', methods: ['GET'])]
     public function index(VehicleRepository $vehicles, ReviewRepository $reviews): Response
     {
-        dd($this->clientIp());
         return $this->render('home/index.html.twig', [
             'pieces' => $vehicles->findPublished(6, VehicleTypeEnum::PIECE->value),
             'reserved' => $vehicles->findReserved(6),
