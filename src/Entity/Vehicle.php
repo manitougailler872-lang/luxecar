@@ -122,6 +122,9 @@ class Vehicle
     #[ORM\Column(length: 120, nullable: true)]
     private ?string $ownerReference;
 
+    #[ORM\Column(type:'decimal', precision:14, scale:2, nullable: true)]
+    private ?string $reservationPercent = '0.0';
+
     #[ORM\Column(length: 120, nullable: true)]
     private ?string $conformityBrand;
 
@@ -577,6 +580,16 @@ class Vehicle
 
     public function getCylinder(): ?string { return $this->cylinder; }
     public function setCylinder(?string $v): self { $this->cylinder = $v; return $this; }
+
+    public function getReservationPercent(): ?string
+    {
+        return $this->reservationPercent;
+    }
+    public function setReservationPercent(?string $v): self
+    {
+        $this->reservationPercent = $v;
+        return $this;
+    }
 
     public function getThicknessTwo(): ?string { return $this->thicknessTwo; }
     public function setThicknessTwo(?string $v): self { $this->thicknessTwo = $v; return $this; }

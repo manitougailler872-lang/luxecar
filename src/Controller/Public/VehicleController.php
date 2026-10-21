@@ -31,6 +31,8 @@ class VehicleController extends AbstractController
         $priceMin   = $request->query->get('price_min');
         $priceMax   = $request->query->get('price_max');
         $categories = (array) $request->query->all('categories');
+        $transmission =  trim((string) $request->query->get('transmission', ''));
+        $category = trim((string) $request->query->get('category', ''));
 
         $qb = $repo->createQueryBuilder('v')->andWhere('v.published = true');
         $qb = $repo->createQueryBuilder('v')->andWhere('v.vehicleType = :vehicleType')->setParameter('vehicleType', VehicleTypeEnum::CAR->value);
@@ -41,6 +43,12 @@ class VehicleController extends AbstractController
         }
         if ($brand !== '') {
             $qb->andWhere('v.brand = :brand')->setParameter('brand', $brand);
+        }
+        if ($transmission !== '') {
+            $qb->andWhere('v.transmission = :transmission')->setParameter('transmission', $brand);
+        }
+        if ($category !== '') {
+            $qb->andWhere('v.category = :category')->setParameter('category', $brand);
         }
         if ($year !== null && $year !== '' && (int) $year > 1900) {
             $qb->andWhere('v.year = :year')->setParameter('year', (int) $year);
@@ -57,7 +65,6 @@ class VehicleController extends AbstractController
         if (!empty($categories)) {
             $qb->andWhere('v.category IN (:cats)')->setParameter('cats', $categories);
         }
-
         match ($sort) {
             'price_asc'  => $qb->orderBy('v.price', 'ASC'),
             'price_desc' => $qb->orderBy('v.price', 'DESC'),
@@ -65,13 +72,28 @@ class VehicleController extends AbstractController
             'rating'     => $qb->orderBy('v.rating', 'DESC'),
             default      => $qb->orderBy('v.createdAt', 'DESC'),
         };
-
         return $this->render('vehicle/list.html.twig', [
             'vehicles'   => $qb->getQuery()->getResult(),
-            'q'          => $q,
+            'q'  => $q,
             'brand'      => $brand,
+            'transmission' => $transmission,
+            'category' => $category,
             'fuel'       => $fuel,
             'sort'       => $sort,
+            'categoriesList' => [
+                'Citadine' => 'Citadine',
+                'Berline' => 'Berline',
+                'SUV' => 'SUV',
+                '4x4' => '4x4',
+                'Utilitaire' => 'Utilitaire',
+                'Break' => 'Break',
+                'Camping-Car' => 'Camping-Car',
+                'Coupé' => 'Coupé',
+                'Fourgon' => 'Fourgon',
+                'Pick-Up' => 'Pick-Up',
+                'Sport' => 'Sport',
+                'Van' => 'Van',
+            ],
             'year'       => $year,
             'price_min'  => $priceMin,
             'price_max'  => $priceMax,

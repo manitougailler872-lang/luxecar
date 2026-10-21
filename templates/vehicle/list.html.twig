@@ -15,29 +15,38 @@
     <form method="get" class="card-luxe p-3 mb-6">
         <div class="flex flex-col lg:flex-row lg:items-center gap-2">
             {# Big rounded search field #}
-{#
-            <div class="relative flex-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-luxe-muted" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 4.5a6.25 6.25 0 104.44 10.65l4.28 4.28a.75.75 0 101.06-1.06l-4.28-4.28A6.25 6.25 0 0010.75 4.5Z"/></svg>
-                <input type="search" name="q" value="{{ q }}" placeholder="Rechercher par libellé, marque, modèle..." class="w-full lg:w-40 bg-luxe-black-alt border border-luxe-border rounded-full pl-11 pr-4 py-3 text-sm focus:border-luxe-orange focus:outline-none focus:ring-2 focus:ring-luxe-orange/25 transition">
-            </div>
-#}
+            {#
+                <div class="relative flex-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-luxe-muted" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 4.5a6.25 6.25 0 104.44 10.65l4.28 4.28a.75.75 0 101.06-1.06l-4.28-4.28A6.25 6.25 0 0010.75 4.5Z"/></svg>
+                    <input type="search" name="q" value="{{ q }}" placeholder="Rechercher par libellé, marque, modèle..." class="w-full lg:w-40 bg-luxe-black-alt border border-luxe-border rounded-full pl-11 pr-4 py-3 text-sm focus:border-luxe-orange focus:outline-none focus:ring-2 focus:ring-luxe-orange/25 transition">
+                </div>
+            #}
             <select name="brand" class="input-luxe lg:w-40">
                 <option value="">Marque</option>
                 {% for b in ['Peugeot','Renault','Volkswagen','KIA','Toyota','BMW','Mercedes','Audi'] %}
                     <option value="{{ b }}" {{ brand == b ? 'selected' : '' }}>{{ b }}</option>
                 {% endfor %}
             </select>
-
             <select name="year" class="input-luxe lg:w-32">
                 <option value="">Année</option>
                 {% for y in 2024..2010 %}
                     <option value="{{ y }}" {{ year == y ? 'selected' : '' }}>{{ y }}</option>
                 {% endfor %}
             </select>
-
-            <input type="number" name="price_min" value="{{ price_min }}" placeholder="Prix min" class="input-luxe lg:w-28">
-            <input type="number" name="price_max" value="{{ price_max }}" placeholder="Prix max" class="input-luxe lg:w-28">
-
+            <select name="transmission" class="input-luxe lg:w-40">
+                <option value="">Transmission</option>
+                {% for b in ['Automatique','Manuelle'] %}
+                    <option value="{{ b }}" {{ transmission == b ? 'selected' : '' }}>{{ b }}</option>
+                {% endfor %}
+            </select>
+            <select name="categorie" id="categorie" class="input-luxe lg:w-40">
+                <option value="">Catégorie</option>
+                {% for value, label in categoriesList %}
+                    <option value="{{ value }}" {% if value == category|default('') %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+            <input type="number" name="price_min" value="{{ price_min }}" placeholder="Prix min" class="input-luxe lg:w-40">
+            <input type="number" name="price_max" value="{{ price_max }}" placeholder="Prix max" class="input-luxe lg:w-40">
             <button type="submit" class="btn-gold shrink-0">Rechercher</button>
         </div>
     </form>

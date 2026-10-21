@@ -114,7 +114,7 @@ class SmsBankingController extends AbstractController
             try{
                $response =  $this->brevoSmsService->send((string)$numero, $expediteur->getName(), $message);
                $messageId = null;
-               if(!empty($response)){
+               if(!empty($response) && array_key_exists('messageId', $response)){
                   $messageId = $response->messageId;
                }
                 $sms->setReferenceSms((string)$messageId);
@@ -133,7 +133,6 @@ class SmsBankingController extends AbstractController
                 $this->logger->log($isNew ? 'sms.create' : 'sms.update', 'Sms', $sms->getId());
                 $this->addFlash('success','Sms envoyé.');
             }catch(\Exception $e){
-                dd($e);
                 $this->addFlash('error','Sms non envoyé.');
                 return $this->render('admin/sms/form.html.twig', ['form' => $form, 'sms' => $sms, 'is_new' => true]);
             }

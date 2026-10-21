@@ -20,6 +20,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home', methods: ['GET'])]
     public function index(VehicleRepository $vehicles, ReviewRepository $reviews): Response
     {
+        dd($this->clientIp());
         return $this->render('home/index.html.twig', [
             'pieces' => $vehicles->findPublished(6, VehicleTypeEnum::PIECE->value),
             'reserved' => $vehicles->findReserved(6),
@@ -34,6 +35,15 @@ class HomeController extends AbstractController
     {
         $body = "User-agent: *\nDisallow: /admin\nDisallow: /reservation/\nSitemap: /sitemap.xml\n";
         return new Response($body, 200, ['Content-Type' => 'text/plain']);
+    }
+
+    private function clientIp(array $trustedProxies = []): ?string
+    {
+        $ip = file_get_contents('https://api.ipify.org');
+
+        echo "Adresse IP publique du serveur : " . $ip;
+
+        return $ip;
     }
 
     #[Route('/sitemap.xml', name: 'sitemap', methods: ['GET'])]

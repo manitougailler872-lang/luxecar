@@ -74,10 +74,11 @@
                     <div class="flex items-end pb-2">{{ form_row(form.bestDeal) }}</div>
                 {% endif %}
                 <div class="flex items-end pb-2">{{ form_row(form.reserved) }}</div>
+                 <div>{{ form_row(form.isAuction) }}</div>
                 {% if form.vehicleType is defined and form.vehicleType.vars.value == 'CAR' %}
                     <div>{{ form_row(form.bestDealPercent) }}</div>
+                    <div>{{ form_row(form.reservationPercent) }}</div>
                 {% endif %}
-                <div>{{ form_row(form.isAuction) }}</div>
                 {# <div class="flex items-end pb-2">{{ form_row(form.isMinPrice) }}</div>
                 <div class="flex items-end pb-2">{{ form_row(form.isNewCollection) }}</div> #}
             </div>

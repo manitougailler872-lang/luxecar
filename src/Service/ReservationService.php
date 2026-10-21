@@ -28,9 +28,8 @@ class ReservationService
     {
         // Snapshot the vehicle price so later price changes don't affect this reservation
         $vehiclePrice = $vehicle->getPriceAsFloat();
-        $percentage   = $this->settings->getFloat(SettingService::RESERVATION_PERCENTAGE, 20.0);
+        $percentage   =  (float)$vehicle->getReservationPercent() ?? $this->settings->getFloat(SettingService::RESERVATION_PERCENTAGE, 20.0) ;
         $feeAmount    = round($vehiclePrice * ($percentage / 100.0), 2);
-
         $reservation
             ->setVehicle($vehicle)
             ->setVehiclePriceSnapshot(number_format($vehiclePrice, 2, '.', ''))

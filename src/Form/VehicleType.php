@@ -148,6 +148,10 @@ class VehicleType extends AbstractType
             'label'    => 'Pourcentage de réduction ?',
             'required' => false,
         ])
+            ->add('reservationPercent', TextType::class, [
+                'label'    => 'Pourcentage de réservation',
+                'required' => false,
+            ])
         ->add('cnit', TextType::class, ['label' => 'Type/CNIT', 'required' => false])
         ->add('dimPneus', TextType::class, ['label' => 'Dimensions Pneus', 'required' => false])
         ->add('tvv', TextType::class, ['label' => 'TVV', 'required' => false])
