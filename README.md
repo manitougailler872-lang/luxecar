@@ -63,8 +63,6 @@ Ouvrir :
 - Public : http://localhost:8000
 - Administration : http://localhost:8000/admin
 
-Compte DEV créé par les fixtures : `admin@luxecar.local` / `admin1234!` — **à ne jamais utiliser en production**.
-
 ---
 
 ## Installation via Docker
