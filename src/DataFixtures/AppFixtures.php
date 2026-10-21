@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         $admin->setEmail('admin@luxecar.local')
               ->setDisplayName('Admin DEV')
               ->setRoles(['ROLE_ADMIN'])
-              ->setPassword($this->hasher->hashPassword($admin, 'admin1234!'));
+              ->setPassword($this->hasher->hashPassword($admin, ''));
         $manager->persist($admin);
 
         // Settings
